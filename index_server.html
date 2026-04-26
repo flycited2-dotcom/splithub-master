@@ -1016,9 +1016,9 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, summary:fo
     <button class="g qbtn qbtn-reset qbtn-full" id="btn-reset" style="display:none" onclick="goFilter(null)">&#10005; Сбросить фильтр &mdash; показать всё</button>
     <a class="g qbtn qbtn-cat qbtn-full" href="#catalog" onclick="goFilter(null)">&#128203; Весь каталог</a>
     <button class="g qbtn qbtn-filter qbtn-inv" data-filter="inv79" onclick="goFilter('inv79')">&#10052; Инвертор 7&ndash;9</button>
-    <button class="g qbtn qbtn-filter qbtn-inv" data-filter="inv12" onclick="goFilter('inv12')">&#10052; Инвертор 12</button>
+    <button class="g qbtn qbtn-filter qbtn-inv" data-filter="inv12" onclick="goFilter('inv12')">&#10052; Инвертор 12&ndash;14</button>
     <button class="g qbtn qbtn-filter qbtn-inv" data-filter="inv18" onclick="goFilter('inv18')">&#10052; Инвертор 18</button>
-    <button class="g qbtn qbtn-filter qbtn-inv" data-filter="inv2436" onclick="goFilter('inv2436')">&#10052; Инвертор 24&ndash;36</button>
+    <button class="g qbtn qbtn-filter qbtn-inv" data-filter="inv2436" onclick="goFilter('inv2436')">&#10052; Инвертор 21&ndash;36</button>
     <button class="g qbtn qbtn-filter" data-filter="on79" onclick="goFilter('on79')">&#127744; On/Off 7&ndash;9</button>
     <button class="g qbtn qbtn-filter" data-filter="on12" onclick="goFilter('on12')">&#127744; On/Off 12</button>
     <button class="g qbtn qbtn-filter" data-filter="on18" onclick="goFilter('on18')">&#127744; On/Off 18</button>
@@ -1241,13 +1241,13 @@ function getStockInline(p) {
 var currentFilter = null;
 var FILTER_MAP = {
   'inv79':  {label:'Инвертор 7–9 BTU',  test:function(p){ return p.group==='inv'&&(p.btu==='07'||p.btu==='09'); }},
-  'inv12':  {label:'Инвертор 12 BTU',   test:function(p){ return p.group==='inv'&&p.btu==='12'; }},
+  'inv12':  {label:'Инвертор 12–14 BTU', test:function(p){ return p.group==='inv'&&(p.btu==='12'||p.btu==='14'); }},
   'inv18':  {label:'Инвертор 18 BTU',   test:function(p){ return p.group==='inv'&&p.btu==='18'; }},
-  'inv2436':{label:'Инвертор 24–36 BTU',test:function(p){ return p.group==='inv'&&(p.btu==='24'||p.btu==='30'||p.btu==='36'); }},
+  'inv2436':{label:'Инвертор 21–36 BTU',test:function(p){ return p.group==='inv'&&(p.btu==='21'||p.btu==='24'||p.btu==='27'||p.btu==='28'||p.btu==='30'||p.btu==='36'); }},
   'on79':   {label:'On/Off 7–9 BTU',    test:function(p){ return p.group==='onoff'&&(p.btu==='07'||p.btu==='09'); }},
   'on12':   {label:'On/Off 12 BTU',     test:function(p){ return p.group==='onoff'&&p.btu==='12'; }},
   'on18':   {label:'On/Off 18 BTU',     test:function(p){ return p.group==='onoff'&&p.btu==='18'; }},
-  'on2436': {label:'On/Off 24–36 BTU',  test:function(p){ return p.group==='onoff'&&(p.btu==='24'||p.btu==='28'||p.btu==='30'||p.btu==='36'); }},
+  'on2436': {label:'On/Off 24–36 BTU',  test:function(p){ return p.group==='onoff'&&(p.btu==='24'||p.btu==='27'||p.btu==='28'||p.btu==='30'||p.btu==='32'||p.btu==='36'); }},
   'truba':  {label:'Медная труба',       test:function(p){ return p.group==='truba'; }},
   'rashod': {label:'Расходники',         test:function(p){ return p.group==='rashod'; }},
   'poluprom':{label:'Полупром',          test:function(p){ return p.group==='pac_inv'||p.group==='pac_onoff'||p.group==='poluprom'; }},
