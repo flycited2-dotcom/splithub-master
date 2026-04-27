@@ -1029,9 +1029,9 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, summary:fo
     <button class="g qbtn qbtn-filter qbtn-black" data-filter="multi" onclick="goFilter('multi')">&#10054; Чёрные сплиты</button>
   </div>
   <div class="cat-tiles rv" style="transition-delay:0.1s">
-    <a class="g ctile ctile-photo" href="#inv" onclick="go('inv')"><img loading="lazy" class="ctile-bg" src="assets/img/extracted/cat-inv.jpg" alt="Инверторные"><div class="ctile-ov"><div class="ctile-lbl">&#10052; Инверторные</div></div></a>
-    <a class="g ctile ctile-photo" href="#onoff" onclick="go('onoff')"><img loading="lazy" class="ctile-bg" src="assets/img/extracted/cat-onoff.jpg" alt="On/Off"><div class="ctile-ov"><div class="ctile-lbl">&#127744; On/Off</div></div></a>
-    <a class="g ctile ctile-photo" href="#truba" onclick="go('truba')"><img loading="lazy" class="ctile-bg" src="assets/img/extracted/cat-truba.jpg" alt="Медная труба"><div class="ctile-ov"><div class="ctile-lbl">&#128295; Медная труба</div></div></a>
+    <a class="g ctile ctile-photo" href="#inv" onclick="goSection('inv');return false"><img loading="lazy" class="ctile-bg" src="assets/img/extracted/cat-inv.jpg" alt="Инверторные"><div class="ctile-ov"><div class="ctile-lbl">&#10052; Инверторные</div></div></a>
+    <a class="g ctile ctile-photo" href="#onoff" onclick="goSection('onoff');return false"><img loading="lazy" class="ctile-bg" src="assets/img/extracted/cat-onoff.jpg" alt="On/Off"><div class="ctile-ov"><div class="ctile-lbl">&#127744; On/Off</div></div></a>
+    <a class="g ctile ctile-photo" href="#truba" onclick="goSection('truba');return false"><img loading="lazy" class="ctile-bg" src="assets/img/extracted/cat-truba.jpg" alt="Медная труба"><div class="ctile-ov"><div class="ctile-lbl">&#128295; Медная труба</div></div></a>
     <div class="g ctile ctile-photo" onclick="openPolupromModal()" style="cursor:pointer">
       <img loading="lazy" class="ctile-bg" src="assets/img/extracted/cat-poluprom.png" alt="Полупром" onerror="this.style.display='none'">
       <div class="ctile-ov"><div class="ctile-lbl">&#127981; Полупром</div></div>
@@ -1657,6 +1657,15 @@ function shareSite() {
 }
 
 function go(id) { var el = document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+
+function goSection(id) {
+  currentFilter = null;
+  document.querySelectorAll('.qbtn-filter').forEach(function(b){ b.classList.remove('active'); });
+  var bar = document.getElementById('filter-bar'); if(bar) bar.style.display = 'none';
+  var rst = document.getElementById('btn-reset');  if(rst) rst.style.display = 'none';
+  renderAll();
+  setTimeout(function(){ var el = document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }, 50);
+}
 
 // ── Nav height fix ────────────────────────────────────
 function fixHeroPad() {
