@@ -948,10 +948,10 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, summary:fo
 @media(min-width:1024px){.orders-grid{grid-template-columns:repeat(3,1fr)}}
 
 /* ── PRODUCT BADGES ── */
-.pcard-badge{position:absolute;top:8px;left:8px;border-radius:20px;padding:3px 9px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;z-index:2;white-space:nowrap}
-.pb-new{background:rgba(22,163,74,.9);color:#fff}
-.pb-sale{background:rgba(245,158,11,.95);color:#fff}
-.pb-clearance{background:rgba(239,68,68,.9);color:#fff}
+.pcard-badge{position:absolute;top:8px;left:8px;border-radius:20px;padding:4px 10px;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;z-index:2;white-space:nowrap;box-shadow:0 2px 10px rgba(0,0,0,.18);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.pb-new{background:rgba(22,163,74,.92);color:#fff}
+.pb-sale{background:rgba(239,120,0,.95);color:#fff}
+.pb-clearance{background:rgba(220,38,38,.92);color:#fff}
 .pcard-admin-desc{font-size:.72rem;color:#4b5563;margin-top:6px;line-height:1.4;font-style:italic}
 /* ── Полупром modal ── */
 .ppol-ov{position:fixed;inset:0;z-index:500;background:rgba(15,18,28,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s}
@@ -1149,7 +1149,12 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, summary:fo
 var PRODUCT_OVERRIDES = {};
 fetch("api/admin.php?action=products_overrides_public")
   .then(function(r){return r.json();})
-  .then(function(d){if(d.ok)PRODUCT_OVERRIDES=d.overrides||{};})
+  .then(function(d){
+    if(d.ok && Object.keys(d.overrides||{}).length) {
+      PRODUCT_OVERRIDES = d.overrides;
+      if(typeof renderAll === 'function') renderAll();
+    }
+  })
   .catch(function(){});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfmake.min.js" defer></script>
